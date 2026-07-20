@@ -4,8 +4,9 @@ PandaTech systems that share ONE template.
 
 Each brochure is a self-contained RTL HTML file (inline CSS+JS, no build step),
 public and standalone (no link back into the app), with a "leave your details"
-form that POSTs to the shared central endpoint  POST /public/leads  (PandaPower
-backend) → marketing_leads + Resend notification.
+form that POSTs to the shared central endpoint  POST /api/public/leads  (SendMSG,
+the marketing system) → leads table + Resend notification, and (when a phone is
+given) a promoted prospect that Hila follows up on (approval-gated).
 
 This script is the single source of truth for these systems' brochures. To
 update a brochure with new capabilities (per the CLAUDE.md rule), edit its entry
@@ -24,7 +25,7 @@ other six.
 
 import os
 
-ENDPOINT = "https://send-msg.vercel.app/api/public/leads"
+ENDPOINT = "https://send-msg-zeta.vercel.app/api/public/leads"
 FALLBACK_EMAIL = "avishai.lebenzon@gmail.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
 

@@ -15,9 +15,10 @@
   1. את הברושור **בתוך הריפו של כל מערכת** (`public/landing.html` למערכות web,
      `landing/index.html` לשאר).
   2. עותק ל-`dist/<id>/index.html` כאן — האתר הסטטי המשותף.
-- כל הברושורים שולחים לידים לנקודת קצה משותפת אחת:
-  `POST https://pandapower-backend.onrender.com/public/leads`
-  → טבלת `marketing_leads` ב-Supabase + התראת מייל דרך Resend.
+- כל הברושורים שולחים לידים לנקודת קצה משותפת אחת ב-**SendMSG** (מערכת השיווק):
+  `POST https://send-msg.vercel.app/api/public/leads`
+  → טבלת `leads` + התראת מייל (Resend), וכשיש טלפון מקודם ללקוח פוטנציאלי
+  לפניית הילה (בשער אישור). מסך ניהול: `/leads` ב-SendMSG.
 - הברושורים עצמאיים: אין מהם מעבר אל המערכת עצמה.
 
 ## עדכון / הוספת מערכת
@@ -29,8 +30,7 @@ python3 generate.py
 לעדכון תוכן: ערוך את הרשומה של המערכת ב-`SYSTEMS` בתוך `generate.py` והרץ מחדש.
 להוספת מערכת חדשה: הוסף רשומה ל-`SYSTEMS` (כולל `id`, `repo_path`,
 `shared_host`), **ורשום את ה-`id`** ב-`KNOWN_SYSTEMS`/`SYSTEM_LABELS` בקובץ
-`PandaPower/apps/backend/src/pandapower/routers/public_leads.py` (אחרת ה-endpoint
-ידחה את הליד).
+`SendMSG/lib/leads/systems.ts` (אחרת ה-endpoint ידחה את הליד).
 
 ## חלוקת אחסון
 
