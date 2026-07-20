@@ -24,7 +24,7 @@ other six.
 
 import os
 
-ENDPOINT = "https://pandapower-backend.onrender.com/public/leads"
+ENDPOINT = "https://send-msg.vercel.app/api/public/leads"
 FALLBACK_EMAIL = "avishai.lebenzon@gmail.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
 
