@@ -1,0 +1,49 @@
+# פריסה אוטומטית של האתר הסטטי המשותף (הברושורים) ל-GitHub Pages.
+# מיזוג/דחיפה ל-main → מפרסם את dist/ אוטומטית. ללא מפתחות/סודות: משתמש
+# ב-GITHUB_TOKEN המובנה + OIDC (id-token) — אין Service Account ואין מפתח JSON
+# ששוכב ב-repo (בהתאם לכלל ה-CI/CD הגלובלי).
+#
+# הפעלה חד-פעמית: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: deploy-brochures
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# תור פריסה יחיד; לא מבטל ריצה שכבר מפרסמת.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # מרעננים את dist/ מהתבנית (source of truth) כדי ש-Pages תמיד תואם ל-generate.py,
+      # גם אם מישהו שכח להריץ מקומית. DIST_ONLY=1 → לא נוגע ב-repos האחרים.
+      - name: Regenerate dist
+        run: DIST_ONLY=1 python3 generate.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

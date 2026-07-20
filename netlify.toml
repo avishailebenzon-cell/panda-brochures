@@ -1,0 +1,5 @@
+# Alternative host (Netlify). Publishes the generated dist/ as-is:
+#   /pandoosh, /argus, /pandavista, /personal-assistant, /weavz
+[build]
+  publish = "dist"
+  command = "python3 generate.py"

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pandoosh — קונסיירז' ה-HR של העובד, בוואטסאפ</title>
+<meta name="description" content="פנדוש הוא קונסיירז' HR חכם בוואטסאפ: עונה מיד על נהלים ומדיניות, ומטפל בכל השאר מקצה לקצה — בלי להפנות אף עובד החוצה." />
+<meta property="og:title" content="Pandoosh" />
+<meta property="og:description" content="פנדוש הוא קונסיירז' HR חכם בוואטסאפ: עונה מיד על נהלים ומדיניות, ומטפל בכל השאר מקצה לקצה — בלי להפנות אף עובד החוצה." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root { --accent: #14b8a6; --accent-2: #34d399; --bg: #06140f; --bg-soft: #0b1a15; --card: rgba(255,255,255,.04); --card-brd: rgba(255,255,255,.09); --txt: #e8eef7; --muted: #9aabc0; --ok: #34d399; --err: #f87171; --radius: 18px; --maxw: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Heebo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--txt); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 0; border-radius: 999px; padding: 15px 30px; font-family: inherit; font-size: 17px; font-weight: 700; color: #0a0f1a; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 10px 30px -8px color-mix(in srgb, var(--accent) 60%, transparent); transition: transform .15s ease, box-shadow .15s ease; text-decoration: none; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
+  .btn[disabled] { opacity: .6; cursor: default; transform: none; }
+  .glow { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .glow::before, .glow::after { content: ""; position: absolute; width: 620px; height: 620px; border-radius: 50%; filter: blur(120px); opacity: .35; }
+  .glow::before { background: var(--accent); top: -180px; inset-inline-start: -120px; }
+  .glow::after  { background: var(--accent-2); bottom: -220px; inset-inline-end: -140px; opacity: .22; }
+  header, main, footer { position: relative; z-index: 1; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 22px; letter-spacing: -.5px; }
+  .brand .dot { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; font-size: 18px; }
+  .badge { font-size: 13px; color: var(--muted); border: 1px solid var(--card-brd); border-radius: 999px; padding: 6px 14px; }
+  .hero { padding: 60px 0 40px; text-align: center; }
+  .hero .kicker { display: inline-block; color: var(--accent-2); font-weight: 700; font-size: 15px; letter-spacing: .5px; margin-bottom: 18px; border: 1px solid var(--card-brd); border-radius: 999px; padding: 7px 16px; background: var(--card); }
+  .hero h1 { font-size: clamp(36px, 6vw, 66px); line-height: 1.06; font-weight: 900; letter-spacing: -1.5px; margin: 0 0 20px; }
+  .hero h1 .grad { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { font-size: clamp(17px, 2.4vw, 22px); color: var(--muted); max-width: 720px; margin: 0 auto 30px; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .ghost { background: var(--card); color: var(--txt); border: 1px solid var(--card-brd); box-shadow: none; }
+  .ghost:hover { box-shadow: none; background: rgba(255,255,255,.07); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 46px 0; }
+  .stat { background: var(--card); border: 1px solid var(--card-brd); border-radius: var(--radius); padding: 22px; text-align: center; }
+  .stat b { display: block; font-size: 28px; font-weight: 900; background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat span { color: var(--muted); font-size: 15px; }
+  section.block { padding: 46px 0; }
+  .sec-head { text-align: center; max-width: 640px; margin: 0 auto 38px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: -1px; margin: 0 0 12px; }
+  .sec-head p { color: var(--muted); font-size: 18px; margin: 0; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feature { background: var(--card); border: 1px solid var(--card-brd); border-radius: var(--radius); padding: 26px; transition: transform .15s ease, border-color .15s ease; }
+  .feature:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 45%, var(--card-brd)); }
+  .feature .ico { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px; background: color-mix(in srgb, var(--accent) 18%, transparent); }
+  .feature .ico svg { width: 26px; height: 26px; stroke: var(--accent-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; max-width: 820px; margin: 0 auto; }
+  .benefit { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--card-brd); border-radius: 14px; padding: 16px 18px; }
+  .benefit .chk { color: var(--ok); font-weight: 900; font-size: 18px; margin-top: 1px; }
+  .benefit b { font-weight: 700; }
+  .benefit span { color: var(--muted); }
+  .lead { background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-top: 1px solid var(--card-brd); }
+  .lead-card { background: var(--card); border: 1px solid var(--card-brd); border-radius: 24px; padding: 40px; max-width: 640px; margin: 0 auto; }
+  .lead-card h2 { text-align: center; font-size: clamp(26px, 3.6vw, 34px); font-weight: 900; margin: 0 0 8px; }
+  .lead-card .sub { text-align: center; color: var(--muted); margin: 0 0 28px; font-size: 17px; }
+  form .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+  .field label .opt { color: #64748b; font-weight: 400; }
+  .field input { width: 100%; padding: 14px 16px; border-radius: 12px; font-family: inherit; font-size: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--card-brd); color: var(--txt); outline: none; transition: border-color .15s ease, box-shadow .15s ease; }
+  .field input::placeholder { color: #64748b; }
+  .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .field input.invalid { border-color: var(--err); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  form .btn { width: 100%; justify-content: center; margin-top: 8px; }
+  .form-note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 14px; }
+  .msg { text-align: center; padding: 12px; border-radius: 12px; margin-top: 16px; font-weight: 600; display: none; }
+  .msg.show { display: block; }
+  .msg.err { background: color-mix(in srgb, var(--err) 15%, transparent); color: var(--err); }
+  .success-state { text-align: center; padding: 20px 0; }
+  .success-state .big { font-size: 54px; }
+  .success-state h3 { font-size: 26px; margin: 8px 0; }
+  .success-state p { color: var(--muted); margin: 0; }
+  footer { border-top: 1px solid var(--card-brd); padding: 30px 0; text-align: center; color: var(--muted); font-size: 14px; }
+  @media (max-width: 820px) { .features, .stats { grid-template-columns: 1fr; } .benefits { grid-template-columns: 1fr; } form .grid2 { grid-template-columns: 1fr; } .lead-card { padding: 26px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header><div class="wrap topbar"><div class="brand"><span class="dot">🐼</span> Pandoosh</div><span class="badge">קונסיירז' HR בוואטסאפ · מבית PandaTech</span></div></header>
+<main>
+  <section class="wrap hero">
+    <span class="kicker">לשכת השירות הדיגיטלית של העובד — ערוץ אחד לכל דבר</span>
+    <h1>כל שאלה של עובד,<br /><span class="grad">נענית בוואטסאפ</span></h1>
+    <p class="lead">פנדוש הוא קונסיירז' HR חכם שחי בוואטסאפ של העובדים: עונה מיד על נהלים ומדיניות מתוך מאגר הידע, ומטפל בכל השאר בעצמו — אוסף פרטים, מנתב לבעל התפקיד, ועוקב עד שהתשובה חוזרת.</p>
+    <div class="cta-row"><a href="#lead" class="btn">לשמוע עוד →</a><a href="#features" class="btn ghost">איך זה עובד</a></div>
+  </section>
+  <section class="wrap"><div class="stats"><div class="stat"><b>24/7</b><span>מענה מיידי, בכל שעה</span></div><div class="stat"><b>ערוץ אחד</b><span>הכל בוואטסאפ של העובד</span></div><div class="stat"><b>אפס הפניות</b><span>פנדוש סופג ומחזיר תשובה</span></div></div></section>
+  <section class="wrap block" id="features">
+    <div class="sec-head"><h2>מה פנדוש עושה</h2><p>חוויית עובד אחידה, ועומס נמוך על ה-HR.</p></div>
+    <div class="features"><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>מענה עצמי מיידי</h3><p>שאלות נהלים ומדיניות נענות לבד ומיד, מתוך מאגר הידע הארגוני.</p></div><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg></div><h3>ניתוב חכם לבעלי תפקיד</h3><p>איסוף פרטים בשיחה, מעקב SLA, תזכורות והסלמה — עד שהתשובה חוזרת.</p></div><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>זיהוי עובד ואימות OTP</h3><p>כל שיחה מבודדת ומאובטחת לעובד בודד.</p></div><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div><h3>פאנל ניהול מלא</h3><p>דשבורד, ניהול נושאים, מאגר ידע ולוח בקשות (Kanban).</p></div><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>סנכרון ידע אוטומטי</h3><p>קבצים מ-Google Drive/Dropbox, וניהול מסמכי עובד עם כללי ציות.</p></div><div class="feature"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="M12 18v3"/><path d="M4.9 19.1 7.8 16.2"/><path d="M2 12h4"/><circle cx="12" cy="12" r="3"/></svg></div><h3>שיפור-עצמי יומי</h3><p>מזהה פערי ידע ומעשיר את בסיס הידע אוטומטית.</p></div></div>
+  </section>
+  <section class="wrap block">
+    <div class="sec-head"><h2>למה זה משנה</h2><p>פחות רדיפה אחרי תשובות, יותר ראש שקט.</p></div>
+    <div class="benefits"><div class="benefit"><span class="chk">✓</span><div><b>אף עובד לא מופנה החוצה.</b> <span>פנדוש סופג הכל ומחזיר תשובה.</span></div></div><div class="benefit"><span class="chk">✓</span><div><b>מיידי.</b> <span>מענה על נהלים תוך שניות, 24/7.</span></div></div><div class="benefit"><span class="chk">✓</span><div><b>עומס HR יורד.</b> <span>השגרתי נענה לבד; אנשים מטפלים בחריג.</span></div></div><div class="benefit"><span class="chk">✓</span><div><b>מאובטח.</b> <span>אימות OTP ובידוד שיחה לכל עובד.</span></div></div><div class="benefit"><span class="chk">✓</span><div><b>מתועד.</b> <span>Audit trail מלא לכל פנייה.</span></div></div><div class="benefit"><span class="chk">✓</span><div><b>משתפר לבד.</b> <span>לומד מפערי ידע ומעשיר את עצמו.</span></div></div></div>
+  </section>
+</main>
+<section class="lead block" id="lead"><div class="wrap"><div class="lead-card">
+  <div id="formView">
+    <h2>מתעניינים? נשמח לספר עוד</h2>
+    <p class="sub">השאירו פרטים ונחזור אליכם.</p>
+    <form id="leadForm" novalidate>
+      <div class="grid2">
+        <div class="field"><label for="first_name">שם פרטי</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" placeholder="ישראל" required /></div>
+        <div class="field"><label for="last_name">שם משפחה</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" placeholder="ישראלי" required /></div>
+      </div>
+      <div class="field"><label for="email">אימייל</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required /></div>
+      <div class="field"><label for="phone">טלפון <span class="opt">(לא חובה)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="050-0000000" /></div>
+      <div class="hp" aria-hidden="true"><label>אל תמלאו שדה זה<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label></div>
+      <button type="submit" class="btn" id="submitBtn">שליחת פרטים</button>
+      <div class="form-note">הפרטים נשמרים אצלנו בלבד לצורך יצירת קשר. ללא ספאם.</div>
+      <div class="msg err" id="errMsg"></div>
+    </form>
+  </div>
+  <div id="successView" class="success-state" style="display:none"><div class="big">🎉</div><h3>תודה! קיבלנו את הפרטים</h3><p>נחזור אליכם בהקדם.</p></div>
+</div></div></section>
+<footer><div class="wrap">© Pandoosh · קונסיירז' HR בוואטסאפ · מבית PandaTech</div></footer>
+<script>
+  var CONFIG = { systemId: "pandoosh", endpoint: "https://pandapower-backend.onrender.com/public/leads", fallbackEmail: "avishai.lebenzon@gmail.com" };
+  (function () {
+    var form = document.getElementById("leadForm"), errMsg = document.getElementById("errMsg"), btn = document.getElementById("submitBtn");
+    function showErr(t){ errMsg.textContent = t; errMsg.classList.add("show"); }
+    function clearErr(){ errMsg.classList.remove("show"); }
+    function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); clearErr();
+      var first = form.first_name.value.trim(), last = form.last_name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
+      [form.first_name, form.last_name, form.email].forEach(function (el){ el.classList.remove("invalid"); });
+      var bad = false;
+      if (!first) { form.first_name.classList.add("invalid"); bad = true; }
+      if (!last) { form.last_name.classList.add("invalid"); bad = true; }
+      if (!validEmail(email)) { form.email.classList.add("invalid"); bad = true; }
+      if (bad) { showErr("נא למלא שם פרטי, שם משפחה ואימייל תקין."); return; }
+      btn.disabled = true; btn.textContent = "שולח…";
+      var payload = { system: CONFIG.systemId, first_name: first, last_name: last, email: email, phone: phone, company_website: form.company_website.value };
+      fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) })
+        .then(function (res){ if (!res.ok) throw new Error("bad status " + res.status); document.getElementById("formView").style.display = "none"; document.getElementById("successView").style.display = "block"; })
+        .catch(function (){ btn.disabled = false; btn.textContent = "שליחת פרטים"; showErr("השליחה נכשלה. אפשר לפנות אלינו ישירות במייל: " + CONFIG.fallbackEmail); });
+    });
+  })();
+</script>
+</body>
+</html>
