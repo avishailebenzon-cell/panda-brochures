@@ -16,7 +16,7 @@
      `landing/index.html` לשאר).
   2. עותק ל-`dist/<id>/index.html` כאן — האתר הסטטי המשותף.
 - כל הברושורים שולחים לידים לנקודת קצה משותפת אחת ב-**SendMSG** (מערכת השיווק):
-  `POST https://send-msg.vercel.app/api/public/leads`
+  `POST https://send-msg-zeta.vercel.app/api/public/leads`
   → טבלת `leads` + התראת מייל (Resend), וכשיש טלפון מקודם ללקוח פוטנציאלי
   לפניית הילה (בשער אישור). מסך ניהול: `/leads` ב-SendMSG.
 - הברושורים עצמאיים: אין מהם מעבר אל המערכת עצמה.
